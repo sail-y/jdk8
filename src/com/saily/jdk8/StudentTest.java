@@ -4,6 +4,7 @@
  */
 package com.saily.jdk8;
 
+import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 /**
@@ -21,6 +22,12 @@ public class StudentTest {
         // new的方法引用
         Supplier<Student> supplier2 = Student::new;
         System.out.println(supplier2.get().getName());
+
+
+        // 构造方法引用
+        BiFunction<String, Integer, Student> biFunction = Student::new;
+        Student student = biFunction.apply("zhangsan", 20);
+        System.out.println(student.getName() + " : " + student.getAge());
 
 
     }

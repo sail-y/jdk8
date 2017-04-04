@@ -29,28 +29,35 @@ public class StreamTest1 {
 
         System.out.println("----------");
 
+        // 统计数量
         System.out.println("count: " + students.stream().collect(counting()));
         System.out.println("count: " + students.stream().count());
 
         System.out.println("----------");
 
+        // 查找最小值
         students.stream().collect(minBy(Comparator.comparingInt(Student::getScore))).ifPresent(System.out::println);
+        // 查找最大值
         students.stream().collect(maxBy(Comparator.comparingInt(Student::getScore))).ifPresent(System.out::println);
+        // 计算分数平均值
         System.out.println(students.stream().collect(averagingInt(Student::getScore)));
+        // 计算分数总数
         System.out.println(students.stream().collect(summingInt(Student::getScore)));
+        // IntSummaryStatistics{count=5, sum=450, min=80, average=90.000000, max=100}
         System.out.println(students.stream().collect(summarizingInt(Student::getScore)));
         System.out.println("----------");
-
+        // 拼接字符串 zhangsan, lisi, wangwu, zhaoliu, zhaoliu
         System.out.println(students.stream().map(Student::getName).collect(joining(", ")));
         System.out.println(students.stream().map(Student::getName).collect(joining(", ", "<being>", "<end>")));
 
         System.out.println("----------");
 
+        // 先按照分数分组，分数相同的，再按照名字分组
         Map<Integer, Map<String, List<Student>>> map = students.stream()
                 .collect(groupingBy(Student::getScore, groupingBy(Student::getName)));
         System.out.println(map);
         System.out.println("----------");
-
+        // 80以上和80以下的数据分区
         Map<Boolean, List<Student>> map2 = students.stream().collect(partitioningBy(student -> student.getScore() > 80));
         System.out.println(map2);
 
