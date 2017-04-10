@@ -4,12 +4,10 @@
  */
 package com.saily.jdk8;
 
-import com.google.common.collect.Lists;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * Created by yangfan on 2017/1/17 下午2:29.
@@ -29,7 +27,7 @@ public class Test3 {
 //
 //        new Thread(() -> System.out.println("thread")).start();
 
-        List<String> list = Lists.newArrayList("hello", "world", "hello world");
+        List<String> list = Arrays.asList("hello", "world", "hello world");
 //        list.forEach(item -> System.out.println(item.toUpperCase()));
 
 
@@ -39,7 +37,6 @@ public class Test3 {
 
         Function<String, String> function = String::toUpperCase;
         System.out.println(function.apply("hello"));
-
 
 
     }
