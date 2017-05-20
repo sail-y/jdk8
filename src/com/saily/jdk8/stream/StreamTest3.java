@@ -15,6 +15,11 @@ public class StreamTest3 {
     public static void main(String[] args) {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6);
 
+        System.out.println(list.stream().mapToInt(i -> i).min());
+        System.out.println(list.stream().mapToInt(i -> i).max());
+        System.out.println(list.stream().mapToInt(i -> i).count());
+        System.out.println(list.stream().mapToInt(i -> i).sum());
+        System.out.println(list.stream().mapToInt(i -> i).average());
         System.out.println(list.stream().map(i -> 2 * i).reduce(0, Integer::sum));
     }
 }
